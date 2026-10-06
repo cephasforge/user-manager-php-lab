@@ -1,3 +1,3 @@
 <?php
-    echo "<h1>Hello world</h1>";
-    
+    header("Location: pages/signin.php");
+    exit();

@@ -1,0 +1,3 @@
+    // foreach($users as $u){
+    //     echo 'ID: '.$u['id'].' Name: '.$u['username'].'<br>';
+    // }
