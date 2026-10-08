@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Skip the rewrite if the request matches an existing file or folder
+# (css, js, images...): Apache serves it directly 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, send everything to index.php
+# QSA = keep the query string, L = stop processing further rules
+RewriteRule ^ index.php [QSA,L]

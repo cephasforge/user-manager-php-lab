@@ -1,21 +1,5 @@
 <?php 
-require '../includes/db.php';
-require '../includes/functions.php';
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $user_email = $_POST['email'];
-    $user_username = $_POST['username'];
-    $user_userpwd = password_hash($_POST['userpwd'], PASSWORD_DEFAULT);
-
-    if(createUser($pdo, $user_email, $user_username, $user_userpwd)){
-        $_SESSION['flash'] = 'Account created !';
-        header('Location: signin.php');
-        exit;
-    }
-
-    echo "Email already used !";
-}
-
+require 'includes/topnav.php';
 ?>
 
 <!DOCTYPE html>
