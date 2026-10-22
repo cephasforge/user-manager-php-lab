@@ -1,15 +1,16 @@
 <?php
 
-//Classes
 require __DIR__ . '\classes\Database.php';
 require __DIR__ . '\classes\Router.php';
 
-//Controller
+
 require __DIR__ . '\classes\Controller.php';
 require __DIR__ . '\classes\HomeController.php';
 
-$config = require __DIR__ . '\config\database.php';
-$pdo = Database::connect($config);
+require __DIR__ . '\classes\User.php';
+require __DIR__ . '\classes\UserController.php';
+require __DIR__ . '\classes\UserRepository.php';
+
 
 $router = new Router();
 require __DIR__ . '\routes.php';

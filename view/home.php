@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+session_start();
 require 'includes/topnav.php';
-
 ?>
 
 <!DOCTYPE html>

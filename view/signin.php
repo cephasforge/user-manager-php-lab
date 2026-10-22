@@ -1,4 +1,5 @@
-<?php
+<?php 
+session_start();
 require 'includes/topnav.php';
 ?>
 
@@ -16,7 +17,7 @@ require 'includes/topnav.php';
             <h1>Sign In</h1>
         </div>
         <div>
-            <form action="signin.php" method="POST">
+            <form action="signin" method="POST">
                 <div>
                     <label for="username">email</label>
                     <input type="text" id="email" name="email">
@@ -24,7 +25,7 @@ require 'includes/topnav.php';
 
                 <div>
                     <label for="userpwd">Password</label>
-                    <input type="password" id="pwd" name="userpwd">
+                    <input type="password" id="pwd" name="password">
                 </div>
 
                 <div>

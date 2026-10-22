@@ -7,8 +7,8 @@ class User{
         private string $username, 
         private string $email, 
         private string $password, 
-        private string $role, 
-        private ?DateTimeImmutable $created_at = null,
+        private ?string $role, 
+        private ?string $createdAt = null,
     ){}
 
     public function getId(): ?int 
@@ -16,12 +16,18 @@ class User{
         return $this->id;
     }
 
+    public function setId(int $id): static  
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getUsername(): string 
     {
         return $this->username;
     }
 
-    public function setUsername($username): static  
+    public function setUsername(string $username): static  
     {
         $this->username = $username;
         return $this;
@@ -32,7 +38,7 @@ class User{
         return $this->email;
     }
 
-    public function setEmail($email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
         return $this;
@@ -43,7 +49,7 @@ class User{
         return $this->password;
     }
 
-    public function setPassword($nonHashPassword): static
+    public function setPassword(string $nonHashPassword): static
     {
         $this->password = password_hash($nonHashPassword, PASSWORD_DEFAULT);
         return $this;
@@ -54,14 +60,20 @@ class User{
         return $this->role;
     }
 
-    public function setRole($role): static
+    public function setRole(?string $role): static
     {
         $this->role = $role;
         return $this;
     }
 
-    public function getCreated_at(): ?DateTimeImmutable
+    public function getCreatedAt(): string
     {
-        return $this->created_at;
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(string $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+        return $this;
     }
 }
