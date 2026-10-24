@@ -8,6 +8,7 @@
 <body>
     <?php 
         require 'includes/user_topnav.php';
+        
     ?>
     <table>
         <thead>
@@ -26,9 +27,15 @@
                     <td><?= htmlspecialchars($user->getEmail()) ?></td>
                     <td>
                         <form action="user" method="post">
-                            <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($user->getId()) ?>"> 
                             <button type="submit">More</button>
                         </form>
+                        <?php if($_SESSION['user_role'] == 'super_admin'): ?>
+                        <form action="delete" method="POST">
+                            <input type="hidden" id="id" name="id" value="<?= htmlspecialchars($user->getId()) ?>">
+                            <button type="submit">DELETE</button>
+                        </form>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

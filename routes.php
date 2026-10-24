@@ -11,3 +11,5 @@ $router->add('GET', '/user-home', [UserController::class, 'userHome']);
 $router->add('GET', '/logout', [UserController::class, 'userLogout']);
 
 $router->add('POST', '/user', [UserController::class, 'userRead']);
+$router->add('POST', '/update', [UserController::class, 'userUpdate']);
+$router->add('POST', '/delete', [UserController::class, 'userDelete']);

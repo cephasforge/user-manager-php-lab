@@ -6,8 +6,8 @@ class User{
         private ?int $id, 
         private string $username, 
         private string $email, 
-        private string $password, 
-        private ?string $role, 
+        private string $password,
+        private ?string $role,
         private ?string $createdAt = null,
     ){}
 

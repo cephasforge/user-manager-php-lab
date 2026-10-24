@@ -1,8 +1,3 @@
-<?php 
-session_start();
-require 'includes/topnav.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +6,9 @@ require 'includes/topnav.php';
     <title>Document</title>
 </head>
 <body>
+    <?php require 'includes/topnav.php';?>
+    <style><?php  require 'assets/css/main.css'; ?></style>
+    
     <h1>USER MANAGEMENT LAB</h1>
 </body>
 </html>

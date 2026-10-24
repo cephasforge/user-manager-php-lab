@@ -1,6 +1,8 @@
 <?php
 class HomeController extends Controller{
     public function home(): void{
+        session_start();
+
         $this->render('home', [
             'title'   => 'Accueil',
             'message' => 'Bienvenue sur mon application',
@@ -8,6 +10,7 @@ class HomeController extends Controller{
     }
 
     public function signin(): void{
+        session_start();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $email = $_POST['email'];
@@ -36,6 +39,7 @@ class HomeController extends Controller{
     }
 
     public function signup(): void{
+        session_start();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $email = $_POST['email'];

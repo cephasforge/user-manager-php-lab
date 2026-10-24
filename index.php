@@ -1,5 +1,4 @@
 <?php
-
 require __DIR__ . '\classes\Database.php';
 require __DIR__ . '\classes\Router.php';
 

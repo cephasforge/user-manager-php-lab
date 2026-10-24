@@ -33,6 +33,15 @@ class UserRepository{
             );
         }
     }
+
+    static function deleteUser(int $id){
+        $config = require __DIR__ .self::$dbpath;
+        $pdo = Database::connect($config);
+
+        $stmt = $pdo->prepare('DELETE from users WHERE id = ?');
+
+        return $stmt->execute([$id]);
+    }
     
     static function getUserById(int $id): mixed {
         $config = require __DIR__ .self::$dbpath;
@@ -79,5 +88,14 @@ class UserRepository{
         }
 
         return $users;
+    }
+
+    static function updateUser(User $user): bool{
+        $config = require __DIR__ .self::$dbpath;
+        $pdo = Database::connect($config);
+
+        $stmt = $pdo->prepare('UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?');
+
+        return $stmt->execute([$user->getUsername(), $user->getEmail(), $user->getRole(), $user->getId()]);
     }
 }

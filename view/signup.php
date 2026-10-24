@@ -1,16 +1,16 @@
-<?php 
-session_start();
-require 'includes/topnav.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require 'includes/bootstrap.php'; ?>
     <title>Document</title>
 </head>
 <body>
+
+
+    <style><?php  require 'assets/css/main.css'; ?></style> 
+
     <div>
         <h1>Sign Up</h1>
     </div>
@@ -39,7 +39,7 @@ require 'includes/topnav.php';
     </div>
 
     <div>
-        <p>Already have an account? click <a href="signin.php">here</a></p>
+        <p>Already have an account? click <a href="signin">here</a></p>
     </div>
 </body>
 </html>
