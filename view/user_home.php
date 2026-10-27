@@ -5,40 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <?php 
-        require 'includes/user_topnav.php';
-        
-    ?>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($users as $user): ?>
+<body class="bg-user">
+    <style><?php require 'assets/css/main.css'; ?></style>
+    <?php require 'includes/user_topnav.php';?>
+
+    <div class="w-75 mx-auto">
+        <table class="table table-striped table-dark table-hover text-center">
+            <thead>
                 <tr>
-                    <th><?= htmlspecialchars($user->getId()) ?></th>
-                    <td><?= htmlspecialchars($user->getUsername()) ?></td>
-                    <td><?= htmlspecialchars($user->getEmail()) ?></td>
-                    <td>
-                        <form action="user" method="post">
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($user->getId()) ?>"> 
-                            <button type="submit">More</button>
-                        </form>
-                        <?php if($_SESSION['user_role'] == 'super_admin'): ?>
-                        <form action="delete" method="POST">
-                            <input type="hidden" id="id" name="id" value="<?= htmlspecialchars($user->getId()) ?>">
-                            <button type="submit">DELETE</button>
-                        </form>
-                        <?php endif; ?>
-                    </td>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach($users as $user): ?>
+                    <tr>
+                        <th><?= htmlspecialchars($user->getId()) ?></th>
+                        <td><?= htmlspecialchars($user->getUsername()) ?></td>
+                        <td><?= htmlspecialchars($user->getEmail()) ?></td>
+                        <td><?= htmlspecialchars(UserRepository::getFormatedDate($user->getCreatedAt())) ?></td>
+                        <td>
+                            <form action="user" method="post">
+                                <input type="hidden" name="id" value="<?= htmlspecialchars($user->getId()) ?>"> 
+                                <button type="submit">More</button>
+                            </form>
+                            <?php if($_SESSION['user_role'] == 'super_admin'): ?>
+                            <form action="delete" method="POST">
+                                <input type="hidden" id="id" name="id" value="<?= htmlspecialchars($user->getId()) ?>">
+                                <button type="submit">DELETE</button>
+                            </form>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>

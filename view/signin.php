@@ -6,7 +6,7 @@
     <?php require 'includes/bootstrap.php'; ?>
     <title>Document</title>
 </head>
-<body>
+<body class="bg-home">
 
     <style><?php require 'assets/css/main.css'; ?></style>
 
@@ -15,11 +15,17 @@
             <div class="text-center text-white">
                 <h1>Sign In</h1>
             </div>
-
+            
+            <?php if (isset($flash)): ?>
+            <div class="text-center border rounded-3 p-3 bg-glass-flash"">
+                <p class="text-white h5"><?= htmlspecialchars($flash) ?></p>
+            </div>
+            <?php endif; ?>
+            
             <form action="signin" method="POST">
                 <div class="mt-3">
                     <label class="form-label text-white" for="username">Email</label>
-                    <input class="form-control" type="text" id="email" name="email" placeholder="Enter your email" required>
+                    <input class="form-control" type="text" id="email" name="email" placeholder="Enter your email" required value="<?= htmlspecialchars($old_email ?? '') ?>" >
                 </div>
 
                 <div class="mt-3">

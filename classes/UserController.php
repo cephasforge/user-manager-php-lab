@@ -66,7 +66,7 @@ class UserController extends Controller{
         $_SESSION = [];
         session_destroy();
 
-        $this->redirect('home');
+        $this->redirect('signin');
     }
     
     private static function isUserConnected(): bool{

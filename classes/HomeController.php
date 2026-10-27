@@ -4,13 +4,13 @@ class HomeController extends Controller{
         session_start();
 
         $this->render('home', [
-            'title'   => 'Accueil',
-            'message' => 'Bienvenue sur mon application',
+
         ]);
     }
 
     public function signin(): void{
         session_start();
+
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $email = $_POST['email'];
@@ -27,13 +27,14 @@ class HomeController extends Controller{
 
                 $this->redirect('user-home');
             }else{
-                echo 'MOT DE PASSE OU EMAIL INCORRECTE';
-                return;
+                $this->render('signin', [
+                    'flash' => 'Email or Password is incorrect',
+                    'old_email' => $_POST['email']
+                ]);
             }
         }else{            
             $this->render('signin', [
-                'title'   => 'Accueil',
-                'message' => 'Bienvenue sur mon application',
+
             ]);
         }
     }
@@ -53,18 +54,19 @@ class HomeController extends Controller{
                 UserRepository::addUser($user);
             }catch(PDOException $e){
                 if ($e->getCode() === '23000') { 
-                    $this->render('signin', [
-                        'title'   => 'Accueil',
+                    
+                    $this->render('signup', [
+                        'flash' => 'This email is already associated with another account',
+                        'old_email' => $_POST['email'],
+                        'old_username' => $_POST['username']
                     ]);
 
                     return;
                 }
-                throw $e;
             }
 
             $this->render('signin', [
-                'title'   => 'Accueil',
-                'message' => 'Bienvenue sur mon application',
+                'flash' => 'Congratulations '.$_POST['username'].', your account has been successfully created',
             ]);
             
             return;

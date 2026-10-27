@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <?php 
-        require 'includes/user_topnav.php';
-    ?>
+<body class="bg-user">
+    <style><?php require 'assets/css/main.css'; ?></style>
+    <?php require 'includes/user_topnav.php';?>
     
     <div>
         <form action="update" method="POST">

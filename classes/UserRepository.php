@@ -98,4 +98,18 @@ class UserRepository{
 
         return $stmt->execute([$user->getUsername(), $user->getEmail(), $user->getRole(), $user->getId()]);
     }
+
+    static public function getFormatedDate(string $date): string{
+        $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+
+        if($dateTime === false){
+            return 'NA';
+        }
+
+        $mouth = strtoupper($dateTime->format('M'));
+        $day = $dateTime->format('d');
+        $hour = $dateTime->format('gA');
+
+        return "$mouth $day at $hour";
+    }
 }
